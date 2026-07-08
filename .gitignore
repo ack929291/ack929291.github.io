@@ -1,0 +1,21 @@
+# Jekyll 编译产物（本地预览时生成，不需要提交）
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# 依赖目录
+.bundle/
+vendor/
+
+# 系统/编辑器文件
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Ruby
+*.gem
+Gemfile.lock

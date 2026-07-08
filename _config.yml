@@ -1,0 +1,38 @@
+# 站点配置 - Jekyll + GitHub Pages
+# 完整配置说明见: https://jekyllrb.com/docs/configuration/
+
+# ===== 站点基本信息 =====
+title: 我的博客
+email: your-email@example.com
+description: >-
+  这里写一句话简介，会显示在网站标题下方。
+  换行也没关系。
+baseurl: ""                    # 仓库叫 用户名.github.io 时留空
+url: "https://ack929291.github.io"   # 你的 GitHub Pages 网址
+twitter_username:
+github_username:
+
+# ===== 主题 =====
+# minima 是 GitHub Pages 官方默认主题，干净朴素
+theme: minima
+
+# ===== Markdown 渲染 =====
+markdown: kramdown
+highlighter: rouge
+
+# ===== 插件（GitHub Pages 白名单内的才生效）=====
+plugins:
+  - jekyll-feed          # 自动生成 RSS 订阅
+  - jekyll-seo-tag       # 自动 SEO 标签
+
+# ===== 文章相关 =====
+permalink: /:year/:month/:day/:title/   # 文章网址格式
+timezone: Asia/Shanghai
+
+# ===== 排除不要编译的文件 =====
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - .git
