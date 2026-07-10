@@ -16,6 +16,12 @@ github_username:
 # minima 是 GitHub Pages 官方默认主题，干净朴素
 theme: minima
 
+# ===== 顶部导航栏（minima 从这里读）=====
+header_pages:
+  - about.md
+  - categories.md
+  - tags.md
+
 # ===== Markdown 渲染 =====
 markdown: kramdown
 highlighter: rouge

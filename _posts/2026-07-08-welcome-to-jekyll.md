@@ -3,13 +3,14 @@ layout: post
 title: "如何写一篇新文章"
 date: 2026-07-08 10:00:00 +0800
 categories: 指南
+tags: [教程, jekyll, markdown]
 ---
 
-想发新文章，照着做：
+想发新文章,照着做:
 
 ## 1. 在 `_posts/` 目录下新建文件
 
-文件名必须是这样：
+文件名必须是这样:
 
 ```
 年-月-日-英文标题.md
@@ -24,7 +25,8 @@ categories: 指南
 layout: post
 title: "文章标题"
 date: 2026-07-08 10:00:00 +0800
-categories: 分类名
+categories: 指南
+tags: [教程, jekyll, markdown]
 ---
 ```
 
