@@ -48,11 +48,13 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== H4：突出的"黑体"小标题 ===== */
 .post-content h4,
 article h4 {
-  font-size: 1.15em !important;
-  font-weight: 500;
-  margin: 1.5em 0 0.6em;
-  padding-left: 0.6em;
-  border-left: 3px solid #6c6c6c;
+  font-size: 1.12em !important;
+  font-weight: 600;
+  color: #202124;
+  margin: 1.8em 0 0.7em;
+  padding: 0;
+  border-left: none !important;
+  border-bottom: none !important;
 }
 
 /* ===== 页面宽度：大幅加宽（minima 默认只有 800px）===== */
@@ -72,13 +74,13 @@ article h4 {
   }
 }
 
-/* ===== 引用块（Blockquote）：左边框 + 浅灰底 + 圆角 ===== */
+/* ===== 引用块（Blockquote）：左边框 + 淡橙底 + 圆角 ===== */
 .post-content blockquote,
 article blockquote,
 blockquote {
-  border-left: 4px solid #6c6c6c !important;
-  background: #f6f8fa !important;
-  color: #4a4a4a !important;
+  border-left: 4px solid #f59e0b !important;
+  background: #fff7ed !important;
+  color: #5f3b16 !important;
   padding: 0.8em 1.2em !important;
   margin: 1.2em 0 !important;
   border-radius: 0 6px 6px 0 !important;
@@ -117,18 +119,62 @@ pre, code, kbd, samp {
   border: none !important;
 }
 
-/* 代码块容器 pre：浅灰底（和行内代码同色系，统一不跳）*/
-.highlight,
-pre.highlight,
-pre {
-  background: #f6f8fa !important;
-  color: #24292e !important;
+/* 代码块：外层只画一个浅灰矩形，内层 pre 只负责排版和横向滚动 */
+div.highlighter-rouge,
+figure.highlight {
+  margin: 1.3em 0 !important;
+  background: transparent !important;
+}
+
+.highlighter-rouge .highlight,
+figure.highlight {
+  background: #e9edf3 !important;
+  color: #111827 !important;
+  border: 1px solid #b8c2cc !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+pre.highlight {
+  margin: 1.3em 0 !important;
+  background: #e9edf3 !important;
+  color: #111827 !important;
+  border: 1px solid #b8c2cc !important;
   border-radius: 8px !important;
   padding: 1em 1.2em !important;
-  overflow-x: auto;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   font-size: 0.9em;
   line-height: 1.6;
-  border: 1px solid #e1e4e8 !important;
+}
+
+.highlighter-rouge .highlight pre,
+figure.highlight pre {
+  margin: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1em 1.2em !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+/* 没有经过 Rouge 包裹的普通 pre，也保持同一套灰底代码块外观 */
+pre:not(.highlight) {
+  margin: 1.3em 0 !important;
+  background: #e9edf3 !important;
+  color: #111827 !important;
+  border: 1px solid #b8c2cc !important;
+  border-radius: 8px !important;
+  padding: 1em 1.2em !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  font-size: 0.9em;
+  line-height: 1.6;
 }
 
 pre code {
@@ -139,43 +185,36 @@ pre code {
   border: none !important;
 }
 
-/* 代码高亮容器背景：透明 */
-.highlighter-rouge .highlight,
-div.highlighter-rouge,
-figure.highlight {
-  background: transparent !important;
-}
-
-/* ===== 语法高亮配色（GitHub 浅色主题，适配浅灰底）===== */
+/* ===== 语法高亮配色（VS Code Light+ 风格，适配浅灰底）===== */
 .highlight .c, .highlight .ch, .highlight .cm, .highlight .cpf,
-.highlight .c1, .highlight .cs { color: #6a737d !important; font-style: italic !important; }
+.highlight .c1, .highlight .cs { color: #006400 !important; font-style: italic !important; }
 .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
-.highlight .kp, .highlight .kr, .highlight .kt { color: #d73a49 !important; font-weight: normal !important; }
+.highlight .kp, .highlight .kr, .highlight .kt { color: #0000cc !important; font-weight: 600 !important; }
 .highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
 .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
-.highlight .sh, .highlight .s1, .highlight .ss { color: #032f62 !important; }
+.highlight .sh, .highlight .s1, .highlight .ss { color: #8b0000 !important; }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi,
-.highlight .mo, .highlight .il { color: #005cc5 !important; }
-.highlight .nf, .highlight .fm { color: #6f42c1 !important; }
-.highlight .nc, .highlight .bp { color: #6f42c1 !important; }
-.highlight .nt, .highlight .na { color: #22863a !important; }
-.highlight .o, .highlight .ow { color: #d73a49 !important; font-weight: normal !important; }
-.highlight .p { color: #24292e !important; }
+.highlight .mo, .highlight .il { color: #006b3c !important; }
+.highlight .nf, .highlight .fm { color: #6f4a00 !important; }
+.highlight .nc, .highlight .bp { color: #0f6a7a !important; }
+.highlight .nt, .highlight .na { color: #6f0000 !important; }
+.highlight .o, .highlight .ow { color: #0000cc !important; font-weight: 600 !important; }
+.highlight .p { color: #111827 !important; }
 .highlight .n, .highlight .nb, .highlight .nx, .highlight .nv,
-.highlight .vc, .highlight .vg, .highlight .vi { color: #24292e !important; }
-.highlight .nl { color: #6f42c1 !important; }     /* JSON 属性名：紫 */
-.highlight .nd { color: #6f42c1 !important; }     /* 装饰器 */
-.highlight .no { color: #005cc5 !important; }     /* 常量 */
-.highlight .ni { color: #005cc5 !important; }
-.highlight .nn { color: #6f42c1 !important; }
-.highlight .ne, .highlight .sr { color: #22863a !important; }
-.highlight .si, .highlight .sx { color: #032f62 !important; }
-.highlight .kc { color: #005cc5 !important; }
-.highlight .kd { color: #d73a49 !important; }
-.highlight .gd { color: #b31d28 !important; background: #ffebe9 !important; }
-.highlight .gi { color: #22863a !important; background: #f0fff4 !important; }
-.highlight .err { color: #6a737d !important; background: transparent !important; }  /* JSON 注释会被标成 err，改成灰色当注释看 */
-.highlight .w { color: #6e7781 !important; }      /* 空白/缩进占位，淡灰 */
-.highlight .gp { color: #6a737d !important; }
-.highlight .gu { color: #6f42c1 !important; }
-.highlight .gh { color: #6a737d !important; }
+.highlight .vc, .highlight .vg, .highlight .vi { color: #000f80 !important; }
+.highlight .nl { color: #003f8f !important; }     /* JSON 属性名 */
+.highlight .nd { color: #6f4a00 !important; }     /* 装饰器 */
+.highlight .no { color: #005a9c !important; }     /* 常量 */
+.highlight .ni { color: #005a9c !important; }
+.highlight .nn { color: #0f6a7a !important; }
+.highlight .ne, .highlight .sr { color: #6b1735 !important; }
+.highlight .si, .highlight .sx { color: #8b0000 !important; }
+.highlight .kc { color: #0000cc !important; }
+.highlight .kd { color: #0000cc !important; }
+.highlight .gd { color: #b31d28 !important; background: #ffeef0 !important; }
+.highlight .gi { color: #116329 !important; background: #dafbe1 !important; }
+.highlight .err { color: #006400 !important; background: transparent !important; }  /* JSON 注释会被标成 err，改成注释绿 */
+.highlight .w { color: #4b5563 !important; }      /* 空白/缩进占位 */
+.highlight .gp { color: #374151 !important; }
+.highlight .gu { color: #6f4a00 !important; }
+.highlight .gh { color: #374151 !important; }

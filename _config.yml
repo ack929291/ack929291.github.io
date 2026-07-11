@@ -2,11 +2,9 @@
 # 完整配置说明见: https://jekyllrb.com/docs/configuration/
 
 # ===== 站点基本信息 =====
-title: 我的博客
+title: "ack929291's blog"
 email: your-email@example.com
-description: >-
-  这里写一句话简介，会显示在网站标题下方。
-  换行也没关系。
+description: ""
 baseurl: ""                    # 仓库叫 用户名.github.io 时留空
 url: "https://ack929291.github.io"   # 你的 GitHub Pages 网址
 twitter_username:
@@ -18,7 +16,7 @@ theme: minima
 
 # ===== 顶部导航栏（minima 从这里读）=====
 header_pages:
-  - about.md
+  - archive.md
   - categories.md
   - tags.md
 
