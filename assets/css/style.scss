@@ -5,63 +5,119 @@
 @import "minima";
 
 /* ====================================================================
-   自定义样式覆盖
+   字体：阿里巴巴普惠体 Regular（字重 55 / 400）
+   通过 jsDelivr CDN 加载，全球永久免费商用
    ==================================================================== */
+@font-face {
+  font-family: "Alibaba PuHuiTi";
+  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;          /* 加载期间先用系统字体，加载完再替换，避免白屏 */
+}
 
-/* ===== 全局字体：改为无衬线黑体（苹方 / 微软雅黑 / 系统 UI 字体）===== */
+@font-face {
+  font-family: "Alibaba PuHuiTi";
+  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi";
+  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== 全局字体：优先阿里巴巴普惠体，回退到系统字体 ===== */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
-               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
-               Helvetica, Arial, sans-serif;
-  line-height: 1.8;                 /* 行距更舒适 */
+  font-family: "Alibaba PuHuiTi", -apple-system, BlinkMacSystemFont,
+               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;            /* 普惠体 55 = Regular = 400 */
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 标题也统一用无衬线 */
 h1, h2, h3, h4, h5, h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
-               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
-               sans-serif;
-  font-weight: 700;
+  font-family: "Alibaba PuHuiTi", -apple-system, BlinkMacSystemFont,
+               "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  font-weight: 500;            /* 标题用 Medium 更稳，避免有的字重缺粗体 */
 }
 
-/* ===== H4：做成突出的"黑体"小标题 ===== */
+/* ====================================================================
+   H4：突出的"黑体"小标题
+   ==================================================================== */
 .post-content h4,
 article h4 {
   font-size: 1.15em;
-  font-weight: 700;
+  font-weight: 500;
   margin: 1.5em 0 0.6em;
   padding-left: 0.6em;
   border-left: 3px solid #6c6c6c;
 }
 
 /* ====================================================================
+   页面宽度：加宽（minima 默认 800px 偏窄，加宽到 1100px）
+   ==================================================================== */
+.wrapper {
+  max-width: 1100px;           /* 原本 800px，加宽到接近 A3 比例的阅读宽度 */
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+/* ====================================================================
+   引用块（Blockquote）：加左边框 + 浅色背景 + 圆角
+   ==================================================================== */
+.post-content blockquote,
+article blockquote {
+  border-left: 4px solid #6c6c6c;
+  background: #f6f8fa;         /* 浅灰背景，GitHub 风格 */
+  color: #4a4a4a;
+  padding: 0.8em 1.2em;
+  margin: 1.2em 0;
+  border-radius: 0 6px 6px 0;
+}
+
+/* 引用块内每行之间正常换行（修复"两行变一行"的显示问题） */
+.post-content blockquote p,
+article blockquote p {
+  margin-bottom: 0.5em;
+}
+
+/* ====================================================================
    代码块（Code blocks）：现代深色主题
    ==================================================================== */
-
-/* 等宽字体栈（Mac 上优先 SF Mono，现代等宽字体）*/
 pre, code, kbd, samp {
   font-family: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code",
                Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-variant-ligatures: contextual;   /* 等宽字体连字（如 => =>=）*/
+  font-variant-ligatures: contextual;
 }
 
-/* 行内代码 inline code */
+/* 行内代码 inline code：浅灰底 + 深灰字（GitHub/掘金风格） */
 :not(pre) > code {
-  background: #f3f4f6;
-  color: #d6336c;                       /* 粉红色，醒目 */
+  background: #f1f3f5;         /* 浅灰底 */
+  color: #333333;              /* 深灰字 */
   padding: 0.15em 0.4em;
   border-radius: 4px;
   font-size: 0.9em;
   word-break: break-word;
 }
 
-/* 代码块容器 pre：深色背景 + 圆角 + 内边距 */
+/* 覆盖 minima 给 inline code 的紫色边框 */
+:not(pre) > code {
+  border: none;
+}
+
+/* 代码块容器 pre：深色背景 + 圆角 */
 .highlight,
 pre.highlight,
 pre {
-  background: #282c34 !important;       /* One Dark 风格深色底 */
+  background: #282c34 !important;
   color: #abb2bf !important;
   border-radius: 8px;
   padding: 1em 1.2em !important;
@@ -78,23 +134,23 @@ pre code {
   border-radius: 0;
 }
 
-/* ===== 语法高亮配色（One Dark 配色，覆盖 minima 默认 base16）===== */
+/* ===== 语法高亮配色（One Dark）===== */
 .highlight .c, .highlight .ch, .highlight .cm, .highlight .cpf,
-.highlight .c1, .highlight .cs { color: #5c6370; font-style: italic; }   /* 注释 */
+.highlight .c1, .highlight .cs { color: #5c6370; font-style: italic; }
 .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
-.highlight .kp, .highlight .kr, .highlight .kt { color: #c678dd; }        /* 关键字 紫 */
+.highlight .kp, .highlight .kr, .highlight .kt { color: #c678dd; }
 .highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
 .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
-.highlight .sh, .highlight .s1, .highlight .ss { color: #98c379; }        /* 字符串 绿 */
+.highlight .sh, .highlight .s1, .highlight .ss { color: #98c379; }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi,
-.highlight .mo, .highlight .il { color: #d19a66; }                        /* 数字 橙 */
-.highlight .nf, .highlight .fm { color: #61afef; }                        /* 函数 蓝 */
-.highlight .nc, .highlight .bp { color: #e5c07b; }                        /* 类/内置 黄 */
-.highlight .nt, .highlight .na { color: #e06c75; }                        /* 标签/属性 红 */
-.highlight .o, .highlight .ow { color: #56b6c2; }                         /* 运算符 青 */
-.highlight .p { color: #abb2bf; }                                         /* 标点 */
+.highlight .mo, .highlight .il { color: #d19a66; }
+.highlight .nf, .highlight .fm { color: #61afef; }
+.highlight .nc, .highlight .bp { color: #e5c07b; }
+.highlight .nt, .highlight .na { color: #e06c75; }
+.highlight .o, .highlight .ow { color: #56b6c2; }
+.highlight .p { color: #abb2bf; }
 .highlight .n, .highlight .nb, .highlight .nx, .highlight .nv,
-.highlight .vc, .highlight .vg, .highlight .vi { color: #e06c75; }        /* 名称 红 */
-.highlight .gd { color: #e06c75; background: #2d1620; }                   /* diff 删除 */
-.highlight .gi { color: #98c379; background: #1d2b1d; }                   /* diff 新增 */
+.highlight .vc, .highlight .vg, .highlight .vi { color: #e06c75; }
+.highlight .gd { color: #e06c75; background: #2d1620; }
+.highlight .gi { color: #98c379; background: #1d2b1d; }
 .highlight .err { color: #e06c75; }
