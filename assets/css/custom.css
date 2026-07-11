@@ -1,0 +1,172 @@
+/* ====================================================================
+   自定义样式 - 覆盖 minima 默认
+   此文件通过 _includes/custom-head.html 在 main.css 之后加载
+   ==================================================================== */
+
+/* ===== 字体：阿里巴巴普惠体 Regular（字重 55 / 400）===== */
+@font-face {
+  font-family: "Alibaba PuHuiTi";
+  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi";
+  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi";
+  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== 全局字体 ===== */
+body {
+  font-family: "Alibaba PuHuiTi", -apple-system, BlinkMacSystemFont,
+               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+               "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: 400;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Alibaba PuHuiTi", -apple-system, BlinkMacSystemFont,
+               "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif !important;
+  font-weight: 500;
+}
+
+/* ===== H4：突出的"黑体"小标题 ===== */
+.post-content h4,
+article h4 {
+  font-size: 1.15em !important;
+  font-weight: 500;
+  margin: 1.5em 0 0.6em;
+  padding-left: 0.6em;
+  border-left: 3px solid #6c6c6c;
+}
+
+/* ===== 页面宽度：大幅加宽（minima 默认只有 800px）===== */
+/* 用 !important 强制覆盖 minima 的 calc 计算 */
+.wrapper {
+  max-width: 1200px !important;
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+}
+
+/* 移动端响应式：小屏幕下不留白边 */
+@media screen and (max-width: 800px) {
+  .wrapper {
+    max-width: calc(100% - 30px) !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+  }
+}
+
+/* ===== 引用块（Blockquote）：左边框 + 浅灰底 + 圆角 ===== */
+.post-content blockquote,
+article blockquote,
+blockquote {
+  border-left: 4px solid #6c6c6c !important;
+  background: #f6f8fa !important;
+  color: #4a4a4a !important;
+  padding: 0.8em 1.2em !important;
+  margin: 1.2em 0 !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-style: normal !important;    /* 去掉 minima 默认的斜体 */
+  font-size: 1em !important;
+  letter-spacing: 0 !important;
+}
+
+/* 引用块内段落间距 */
+.post-content blockquote p,
+article blockquote p,
+blockquote p {
+  margin-bottom: 0.5em;
+}
+.post-content blockquote p:last-child,
+article blockquote p:last-child,
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== 代码块（Code blocks）：现代深色主题 ===== */
+pre, code, kbd, samp {
+  font-family: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code",
+               Menlo, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-variant-ligatures: contextual;
+}
+
+/* 行内代码 inline code：浅灰底 + 深灰字（GitHub 风格）*/
+:not(pre) > code {
+  background: #f1f3f5 !important;
+  color: #333333 !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 4px !important;
+  font-size: 0.9em;
+  word-break: break-word;
+  border: none !important;    /* 去掉 minima 的紫色边框 */
+}
+
+/* 代码块容器 pre：深色背景 + 圆角 */
+.highlight,
+pre.highlight,
+pre {
+  background: #282c34 !important;
+  color: #abb2bf !important;
+  border-radius: 8px !important;
+  padding: 1em 1.2em !important;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.6;
+  border: 1px solid #21252b !important;
+}
+
+pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* 代码高亮容器背景：去掉 minima 的浅紫底 */
+.highlighter-rouge .highlight,
+div.highlighter-rouge,
+figure.highlight {
+  background: transparent !important;
+}
+
+/* ===== 语法高亮配色（One Dark）：覆盖 minima 默认 base16 ===== */
+.highlight .c, .highlight .ch, .highlight .cm, .highlight .cpf,
+.highlight .c1, .highlight .cs { color: #5c6370 !important; font-style: italic !important; }
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt { color: #c678dd !important; font-weight: normal !important; }
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
+.highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
+.highlight .sh, .highlight .s1, .highlight .ss { color: #98c379 !important; }
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi,
+.highlight .mo, .highlight .il { color: #d19a66 !important; }
+.highlight .nf, .highlight .fm { color: #61afef !important; }
+.highlight .nc, .highlight .bp { color: #e5c07b !important; }
+.highlight .nt, .highlight .na { color: #e06c75 !important; }
+.highlight .o, .highlight .ow { color: #56b6c2 !important; font-weight: normal !important; }
+.highlight .p { color: #abb2bf !important; }
+.highlight .n, .highlight .nb, .highlight .nx, .highlight .nv,
+.highlight .vc, .highlight .vg, .highlight .vi { color: #e06c75 !important; }
+.highlight .gd { color: #e06c75 !important; background: #2d1620 !important; }
+.highlight .gi { color: #98c379 !important; background: #1d2b1d !important; }
+.highlight .err { color: #e06c75 !important; background: transparent !important; }
+.highlight .w { color: #abb2bf !important; }
+.highlight .gp { color: #5c6370 !important; }
+.highlight .gu { color: #56b6c2 !important; }
+.highlight .gh { color: #5c6370 !important; }
