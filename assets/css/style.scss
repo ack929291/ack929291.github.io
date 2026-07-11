@@ -1,0 +1,22 @@
+---
+---
+
+/* 导入 minima 主题的基础样式（前面两个 --- 是必须的） */
+@import "minima";
+
+/* ===== 自定义样式：覆盖 minima 默认值 ===== */
+
+/* H4：加大加粗，做成突出的“黑体”小标题 */
+.post-content h4,
+article h4 {
+  font-size: 1.15em;          /* 比正文大一点（minima 默认是 1em，几乎看不出）*/
+  font-weight: 700;           /* 更粗（minima 默认 600）*/
+  margin: 1.5em 0 0.6em;      /* 上下留出呼吸空间 */
+}
+
+/* 可选：给 H4 加一条左侧竖线，更像“强调块”，不想要就删掉 */
+.post-content h4,
+article h4 {
+  border-left: 3px solid #ddd;
+  padding-left: 0.6em;
+}
