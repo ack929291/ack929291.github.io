@@ -163,10 +163,19 @@ figure.highlight {
 .highlight .p { color: #24292e !important; }
 .highlight .n, .highlight .nb, .highlight .nx, .highlight .nv,
 .highlight .vc, .highlight .vg, .highlight .vi { color: #24292e !important; }
+.highlight .nl { color: #6f42c1 !important; }     /* JSON 属性名：紫 */
+.highlight .nd { color: #6f42c1 !important; }     /* 装饰器 */
+.highlight .no { color: #005cc5 !important; }     /* 常量 */
+.highlight .ni { color: #005cc5 !important; }
+.highlight .nn { color: #6f42c1 !important; }
+.highlight .ne, .highlight .sr { color: #22863a !important; }
+.highlight .si, .highlight .sx { color: #032f62 !important; }
+.highlight .kc { color: #005cc5 !important; }
+.highlight .kd { color: #d73a49 !important; }
 .highlight .gd { color: #b31d28 !important; background: #ffebe9 !important; }
 .highlight .gi { color: #22863a !important; background: #f0fff4 !important; }
-.highlight .err { color: #b31d28 !important; background: transparent !important; }
-.highlight .w { color: #24292e !important; }
+.highlight .err { color: #6a737d !important; background: transparent !important; }  /* JSON 注释会被标成 err，改成灰色当注释看 */
+.highlight .w { color: #6e7781 !important; }      /* 空白/缩进占位，淡灰 */
 .highlight .gp { color: #6a737d !important; }
 .highlight .gu { color: #6f42c1 !important; }
 .highlight .gh { color: #6a737d !important; }
