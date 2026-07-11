@@ -1,22 +1,100 @@
 ---
 ---
 
-/* 导入 minima 主题的基础样式（前面两个 --- 是必须的） */
+/* 导入 minima 主题基础样式 */
 @import "minima";
 
-/* ===== 自定义样式：覆盖 minima 默认值 ===== */
+/* ====================================================================
+   自定义样式覆盖
+   ==================================================================== */
 
-/* H4：加大加粗，做成突出的“黑体”小标题 */
-.post-content h4,
-article h4 {
-  font-size: 1.15em;          /* 比正文大一点（minima 默认是 1em，几乎看不出）*/
-  font-weight: 700;           /* 更粗（minima 默认 600）*/
-  margin: 1.5em 0 0.6em;      /* 上下留出呼吸空间 */
+/* ===== 全局字体：改为无衬线黑体（苹方 / 微软雅黑 / 系统 UI 字体）===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
+               Helvetica, Arial, sans-serif;
+  line-height: 1.8;                 /* 行距更舒适 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 可选：给 H4 加一条左侧竖线，更像“强调块”，不想要就删掉 */
+/* 标题也统一用无衬线 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
+               sans-serif;
+  font-weight: 700;
+}
+
+/* ===== H4：做成突出的"黑体"小标题 ===== */
 .post-content h4,
 article h4 {
-  border-left: 3px solid #ddd;
+  font-size: 1.15em;
+  font-weight: 700;
+  margin: 1.5em 0 0.6em;
   padding-left: 0.6em;
+  border-left: 3px solid #6c6c6c;
 }
+
+/* ====================================================================
+   代码块（Code blocks）：现代深色主题
+   ==================================================================== */
+
+/* 等宽字体栈（Mac 上优先 SF Mono，现代等宽字体）*/
+pre, code, kbd, samp {
+  font-family: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code",
+               Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-variant-ligatures: contextual;   /* 等宽字体连字（如 => =>=）*/
+}
+
+/* 行内代码 inline code */
+:not(pre) > code {
+  background: #f3f4f6;
+  color: #d6336c;                       /* 粉红色，醒目 */
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+/* 代码块容器 pre：深色背景 + 圆角 + 内边距 */
+.highlight,
+pre.highlight,
+pre {
+  background: #282c34 !important;       /* One Dark 风格深色底 */
+  color: #abb2bf !important;
+  border-radius: 8px;
+  padding: 1em 1.2em !important;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.6;
+  border: 1px solid #21252b;
+}
+
+pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* ===== 语法高亮配色（One Dark 配色，覆盖 minima 默认 base16）===== */
+.highlight .c, .highlight .ch, .highlight .cm, .highlight .cpf,
+.highlight .c1, .highlight .cs { color: #5c6370; font-style: italic; }   /* 注释 */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt { color: #c678dd; }        /* 关键字 紫 */
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
+.highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
+.highlight .sh, .highlight .s1, .highlight .ss { color: #98c379; }        /* 字符串 绿 */
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi,
+.highlight .mo, .highlight .il { color: #d19a66; }                        /* 数字 橙 */
+.highlight .nf, .highlight .fm { color: #61afef; }                        /* 函数 蓝 */
+.highlight .nc, .highlight .bp { color: #e5c07b; }                        /* 类/内置 黄 */
+.highlight .nt, .highlight .na { color: #e06c75; }                        /* 标签/属性 红 */
+.highlight .o, .highlight .ow { color: #56b6c2; }                         /* 运算符 青 */
+.highlight .p { color: #abb2bf; }                                         /* 标点 */
+.highlight .n, .highlight .nb, .highlight .nx, .highlight .nv,
+.highlight .vc, .highlight .vg, .highlight .vi { color: #e06c75; }        /* 名称 红 */
+.highlight .gd { color: #e06c75; background: #2d1620; }                   /* diff 删除 */
+.highlight .gi { color: #98c379; background: #1d2b1d; }                   /* diff 新增 */
+.highlight .err { color: #e06c75; }
