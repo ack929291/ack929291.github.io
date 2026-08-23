@@ -9,6 +9,7 @@
 
   <!-- 自定义 CSS：覆盖 minima 默认样式（在 main.css 之后加载，优先级更高）-->
   <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
+  <script src="{{ "/assets/js/image-viewer.js" | relative_url }}" defer></script>
 
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
