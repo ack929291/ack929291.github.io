@@ -262,6 +262,13 @@ pre code {
   border: none !important;
 }
 
+/* 较长的块级公式在窄屏内滚动，避免撑宽正文。 */
+.post-content mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2em 0;
+}
+
 /* ===== 语法高亮配色（VS Code Light+ 风格，适配浅灰底）===== */
 .highlight .c, .highlight .ch, .highlight .cm, .highlight .cpf,
 .highlight .c1, .highlight .cs { color: #006400 !important; font-style: italic !important; }
