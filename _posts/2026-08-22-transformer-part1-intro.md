@@ -16,7 +16,7 @@ Transformer整体流程示意如上图所示。这篇文章先把模型当成一
 
 直观地看，Tokenizer先确定文本中有哪些token，并找到它们在词表中的编号；Embedding再把每个编号换成能够承载信息的向量；Transformer Blocks根据上下文逐层更新这些向量；LM Head根据最终的表示给词表中的所有候选token打分，最后由采样过程选出一个token。
 
-以"The Capital of France is"作为输入，完整的一轮生成如下。
+以"The capital of France is"作为输入，完整的一轮生成如下。
 
 ## Tokenizer：token ID只是编号
 
@@ -36,7 +36,7 @@ Embedding可以先理解为一张随模型一起训练的查找表，词表中�
 
 Embedding的输出会依次经过36个Transformer Block，这是模型处理输入的主体。这里的“结合上下文”，指的是每个位置不再只保留自己的初始表示，而是从当前可见的其他位置取得信息，再更新自己的向量。
 
-以最后一个位置的`is`为例，刚进入第一个Block时，这一行主要来自`is`本身的Embedding；经过逐层处理后，它还包含了模型从`The Capital of France is`这段前缀中提取的信息。后面的LM Head正是根据这个带有上下文的表示，判断下一个token更可能是`Paris`还是词表中的其他候选项。
+以最后一个位置的`is`为例，刚进入第一个Block时，这一行主要来自`is`本身的Embedding；经过逐层处理后，它还包含了模型从`The capital of France is`这段前缀中提取的信息。后面的LM Head正是根据这个带有上下文的表示，判断下一个token更可能是`Paris`还是词表中的其他候选项。
 
 处理过程中，输入和输出的形状始终保持`(5, 2048)`，变化的是5个向量中的内容。每个Block接收上一层的结果并继续更新，36个Block各自拥有独立的参数，并不是把同一个模块重复调用36次。至于Block内部如何完成信息交换，后面再分别展开。
 
@@ -52,20 +52,20 @@ Qwen2.5-3B的词表包含151936个token。LM Head分别处理前面的5个2048�
 
 这5行分别预测5个位置之后应该接哪个token：
 
-- 第1行来自`The`这个位置处理后的向量，用来预测第2个token，也就是`The`后面应该接什么。在当前输入中，实际接在后面的是`Capital`。
-- 第2行来自`Capital`这个位置处理后的向量，它已经包含`The Capital`这段上下文，用来预测第3个token。在当前输入中，下一个token是`of`。
-- 第3行根据`The Capital of`预测第4个token，当前输入中是`France`。
-- 第4行根据`The Capital of France`预测第5个token，当前输入中是`is`。
-- 第5行根据完整的`The Capital of France is`预测第6个token。这个token还没有出现在输入中，正是这一轮需要生成的内容。
+- 第1行来自`The`这个位置处理后的向量，用来预测第2个token，也就是`The`后面应该接什么。在当前输入中，实际接在后面的是`capital`。
+- 第2行来自`capital`这个位置处理后的向量，它已经包含`The capital`这段上下文，用来预测第3个token。在当前输入中，下一个token是`of`。
+- 第3行根据`The capital of`预测第4个token，当前输入中是`France`。
+- 第4行根据`The capital of France`预测第5个token，当前输入中是`is`。
+- 第5行根据完整的`The capital of France is`预测第6个token。这个token还没有出现在输入中，正是这一轮需要生成的内容。
 
 每一行都会给词表中的151936个token分别打分，区别只在于它们看到的上下文长度不同。
 
 ## 从候选项中选出下一个token
 
-虽然模型同时计算了5行logits，但前4行预测的`Capital`、`of`、`France`和`is`都已经包含在输入中，这一轮不需要再从这些位置选择token。当前任务是续写完整的`The Capital of France is`，因此只取第5行，也就是最后一个位置产生的logits。
+虽然模型同时计算了5行logits，但前4行预测的`capital`、`of`、`France`和`is`都已经包含在输入中，这一轮不需要再从这些位置选择token。当前任务是续写完整的`The capital of France is`，因此只取第5行，也就是最后一个位置产生的logits。
 
 取出这一行后，模型使用Softmax将151936个分数转换成总和为1的概率分布，再由采样策略从中选择一个token，例如图中的`Paris`。
 
-这里的输出不是一整句话，而只是一个token。模型将它追加到原输入末尾，序列从5个token变成6个token（"The Capital of France is Paris"），然后进入下一轮预测。
+这里的输出不是一整句话，而只是一个token。模型将它追加到原输入末尾，序列从5个token变成6个token（"The capital of France is Paris"），然后进入下一轮预测。
 
 回头看这一轮生成，模型一直在改变同一段信息的表示形式：文字先变成token ID，ID再换成初始向量，Transformer Blocks把它们更新为包含上下文的向量，LM Head则把最后一个位置的向量变成整个词表的分数。选出的新token接回输入后，这条流程再次开始，一段完整的回答就是这样逐个token生成的。
