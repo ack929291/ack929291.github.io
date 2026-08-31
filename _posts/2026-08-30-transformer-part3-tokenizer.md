@@ -266,7 +266,7 @@ Qwen2.5最终保存了151387条merge规则，因此它的BPE词表大小是：
 = 151936个ID
 ```
 
-22个特殊token包括`<|endoftext|>`、`<|im_start|>`和`<|im_end|>`等。它们会作为完整token直接匹配，不参与BPE合并。其余271个ID目前没有普通token映射，Embedding和LM Head仍按照完整的151936个ID保留对应位置。因此，Tokenizer中的151643个BPE词表项与part1中的151936个模型输出类别并不矛盾。
+22个特殊token包括`<|endoftext|>`、`<|im_start|>`和`<|im_end|>`等。它们会作为完整token直接匹配，不参与BPE合并。其余271个ID目前没有普通token映射，Embedding和LM Head仍按照完整的151936个ID保留对应位置。151643描述的是BPE普通词表的大小，151936描述的是包含特殊token和保留ID在内的完整ID空间。
 
 训练结束后，词表、merge规则和每条规则的rank一起冻结，之后的文本都按照这套结果编码。
 
