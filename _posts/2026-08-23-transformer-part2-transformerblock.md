@@ -92,7 +92,7 @@ S\_i = \begin{array}{c|ccccc} Q \backslash K & \text{The} & \text{capital} & \te
 
 横向看一行，就是一个token依次查询5个位置的结果。例如最后一行来自`is`位置的Q，5个数分别是它与`The`、`capital`、`of`、`France`和`is`的K之间的匹配分数。分数越大，表示这个位置越符合当前查询。
 
-把其中一个格子单独拿出来看，第5行表示`is`正在发起查询，第4列表示它正在匹配`France`。计算这个格子时，模型让`is`经过RoPE后的128维Q向量与`France`经过RoPE后的128维K向量做点积，也就是把128组数值分别相乘后相加，再除以128的平方根。第5行第4列可以写成：
+把其中一个格子单独拿出来看，第5行表示`is`正在发起查询，第4列表示它正在匹配`France`。计算这个格子时，模型让`is`经过RoPE后的128维Q向量与`France`经过RoPE后的128维K向量做点积，再除以128的平方根。第5行第4列可以写成：
 
 \\[
 S\_i[5,4] = \frac{Q^{\prime}\_{i,\text{is}} \cdot K^{\prime}\_{i,\text{France}}}{\sqrt{128}} = 2.3
