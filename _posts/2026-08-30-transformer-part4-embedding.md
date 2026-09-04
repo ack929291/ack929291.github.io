@@ -15,6 +15,8 @@ The | capital | of | France | is
 
 这些整数只是token在词表中的编号，还不能直接进入后面的Transformer Block。Embedding接在Tokenizer后面，负责把每个编号换成一个2048维向量。这篇文章先看推理时怎样完成这次转换，再看训练怎样让一张最初随机初始化的表逐渐形成能够承载语义的向量空间。
 
+<section class="numbered-sections" markdown="1">
+
 ## Embedding就是一张查找表
 
 Qwen2.5-3B的Embedding权重可以记作矩阵`E`。它一共有151936行、2048列：
@@ -92,3 +94,5 @@ The capital of Germany is Berlin
 从part3的最后一步开始，Tokenizer已经得到`[785, 6722, 315, 9625, 374]`。Embedding把这些ID依次当作行号，从形状为`(151936, 2048)`的权重表中取出5行，于是输入从5个整数变成了5个2048维向量。
 
 得到的`(5, 2048)`就是第一个Transformer Block的输入。至此，part1中从token ID到向量的过程已经完整展开。
+
+</section>

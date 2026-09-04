@@ -18,6 +18,8 @@ part1中，输入文本经过Tokenizer和Embedding后，被转换成5个2048维�
 
 沿着图中的数据流，Transformer Block内部的主线可以写成：`x^0 -> RMSNorm -> Attention -> 残差连接 -> RMSNorm -> FFN -> 残差连接 -> x^1`。Attention负责让不同位置之间交换信息，FFN负责分别处理每个位置已经获得的信息。
 
+<section class="numbered-sections" markdown="1">
+
 ## RMSNorm：准备Attention的输入
 
 进入图中的Transformer Block时，这5个向量被记作`x^0`。上标用来标记Block处理前后的阶段：`x^0`是输入，`x^1`是输出。`x^0`记作`(5, 2048)`，其中5表示5个token，2048表示每个token对应一个2048维向量。
@@ -225,3 +227,5 @@ x^1 = x\_{\mathrm{attn}} + F
 从`x^0`到`x^1`，5个向量的数量和维度保持`(5, 2048)`，其中的内容先经过Attention汇总上下文，再经过FFN继续变换，并通过两次残差连接合入当前表示。这就是一个完整Transformer Block完成的处理。
 
 `x^1`随后作为第二个Block的输入，后面35个Block按照相同的结构继续工作，但每个Block都拥有自己的参数。经过全部36个Block后，最后得到的5个向量会回到part1中的生成流程，继续经过最终的RMSNorm和LM Head，转换成5个位置各自的token候选分数，生成时再使用最后一行预测下一个token。至此，Embedding与输出层之间原本被折叠起来的Transformer Blocks就完整展开了。
+
+</section>

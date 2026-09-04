@@ -14,6 +14,9 @@ github_username:
 # minima 是 GitHub Pages 官方默认主题，干净朴素
 theme: minima
 
+minima:
+  date_format: "%Y-%m-%d"
+
 # ===== 顶部导航栏（minima 从这里读）=====
 header_pages:
   - archive.md

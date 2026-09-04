@@ -18,6 +18,8 @@ Transformer整体流程示意如上图所示。这篇文章先把模型当成一
 
 以"The capital of France is"作为输入，完整的一轮生成如下。
 
+<section class="numbered-sections" markdown="1">
+
 ## Tokenizer：token ID只是编号
 
 模型不能直接接收一段字符串。Tokenizer先按照自己的切分规则把文本拆成token，再从词表中查到每个token对应的ID。图中的句子被转换成5个ID，这些数字只是token在词表中的编号。
@@ -69,3 +71,5 @@ Qwen2.5-3B的词表包含151936个token。LM Head分别处理前面的5个2048�
 这里的输出不是一整句话，而只是一个token。模型将它追加到原输入末尾，序列从5个token变成6个token（"The capital of France is Paris"），然后进入下一轮预测。
 
 回头看这一轮生成，模型一直在改变同一段信息的表示形式：文字先变成token ID，ID再换成初始向量，Transformer Blocks把它们更新为包含上下文的向量，LM Head则把最后一个位置的向量变成整个词表的分数。选出的新token接回输入后，这条流程再次开始，一段完整的回答就是这样逐个token生成的。
+
+</section>

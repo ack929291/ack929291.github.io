@@ -57,6 +57,57 @@ article h4 {
   border-bottom: none !important;
 }
 
+/* ===== 长文分节：大章节自动编号，小标题强化层级 ===== */
+.numbered-sections {
+  counter-reset: article-section;
+}
+
+.numbered-sections > h2 {
+  counter-increment: article-section;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55em;
+  margin: 2.65em 0 1.15em !important;
+  padding-top: 1.05em;
+  border-top: 1px solid #d9dee7;
+  font-size: 2em !important;
+  line-height: 1.3;
+}
+
+.numbered-sections > h2:first-child {
+  margin-top: 2.1em !important;
+}
+
+.numbered-sections > h2::before {
+  content: counter(article-section, decimal-leading-zero) " /";
+  flex: 0 0 auto;
+  color: #a55a13;
+  font-size: 0.52em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.numbered-sections > h3 {
+  margin: 2.5em 0 0.85em !important;
+  padding-left: 0.72em;
+  border-left: 3px solid #d97706;
+  font-size: 1.42em !important;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 600px) {
+  .numbered-sections > h2 {
+    gap: 0.4em;
+    margin-top: 3em !important;
+    font-size: 1.7em !important;
+  }
+
+  .numbered-sections > h3 {
+    font-size: 1.28em !important;
+  }
+}
+
 /* ===== 页面宽度：大幅加宽（minima 默认只有 800px）===== */
 /* 用 !important 强制覆盖 minima 的 calc 计算 */
 .wrapper {
