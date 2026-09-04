@@ -28,7 +28,7 @@ RMS是Root Mean Square的缩写，也就是均方根。RMSNorm的均方根计算
 \operatorname{RMS}(\boldsymbol{x})
 =
 \sqrt{
-\frac{1}{d}\sum_{i=1}^{d}x_i^2
+\frac{1}{d}\mathop{\Large\sum}\limits_{i=1}^{d}x_i^2
 +
 \varepsilon
 }
@@ -37,7 +37,7 @@ RMS是Root Mean Square的缩写，也就是均方根。RMSNorm的均方根计算
 这个公式从根号内部开始计算。首先让`d`个分量分别平方，再把平方结果相加，平方会消除正负号对求和的抵消：
 
 \\[
-\sum_{i=1}^{d}x_i^2
+\mathop{\Large\sum}\limits_{i=1}^{d}x_i^2
 =
 x_1^2+x_2^2+\cdots+x_d^2
 \\]
@@ -45,7 +45,7 @@ x_1^2+x_2^2+\cdots+x_d^2
 接下来，用平方和除以维度数`d`：
 
 \\[
-\frac{1}{d}\sum_{i=1}^{d}x_i^2
+\frac{1}{d}\mathop{\Large\sum}\limits_{i=1}^{d}x_i^2
 \\]
 
 这一步得到`d`个分量的平方平均值。对于当前token，`d=2048`，所以这里就是把2048个平方的和除以2048。
@@ -281,7 +281,7 @@ LayerNorm首先计算这些分量的均值：
 \\[
 \mu
 =
-\frac{1}{d}\sum_{i=1}^{d}x_i
+\frac{1}{d}\mathop{\Large\sum}\limits_{i=1}^{d}x_i
 \\]
 
 然后计算每个分量与均值的差，并用这些差计算方差：
@@ -290,7 +290,7 @@ LayerNorm首先计算这些分量的均值：
 \sigma^2
 =
 \frac{1}{d}
-\sum_{i=1}^{d}(x_i-\mu)^2
+\mathop{\Large\sum}\limits_{i=1}^{d}(x_i-\mu)^2
 \\]
 
 接下来，每个分量减去均值，再除以标准差：

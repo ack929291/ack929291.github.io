@@ -3,34 +3,9 @@
    此文件通过 _includes/custom-head.html 在 main.css 之后加载
    ==================================================================== */
 
-/* ===== 字体：阿里巴巴普惠体 Regular（字重 55 / 400）===== */
-@font-face {
-  font-family: "Alibaba PuHuiTi";
-  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Alibaba PuHuiTi";
-  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Alibaba PuHuiTi";
-  src: url("https://cdn.jsdelivr.net/npm/@tslsmart/font-puhuiti/assets/alibaba-puhuiti-light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ===== 全局字体 ===== */
+/* ===== 全局字体：使用系统字体，避免加载外部字体阻塞页面 ===== */
 body {
-  font-family: "Alibaba PuHuiTi", -apple-system, BlinkMacSystemFont,
+  font-family: -apple-system, BlinkMacSystemFont,
                "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
                "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 400;
@@ -40,7 +15,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Alibaba PuHuiTi", -apple-system, BlinkMacSystemFont,
+  font-family: -apple-system, BlinkMacSystemFont,
                "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif !important;
   font-weight: 500;
 }
