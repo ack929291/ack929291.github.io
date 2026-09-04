@@ -289,7 +289,7 @@ pre code {
 }
 
 /* 较长的块级公式在窄屏内滚动，避免撑宽正文。 */
-.post-content mjx-container[display="true"] {
+.post-content .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.2em 0;
