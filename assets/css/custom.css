@@ -351,3 +351,8 @@ pre code {
 .highlight .gp { color: #374151 !important; }
 .highlight .gu { color: #6f4a00 !important; }
 .highlight .gh { color: #374151 !important; }
+
+/* ===== 链接：访问前后保持同一颜色 ===== */
+a:visited {
+  color: #2a7ae2;
+}
