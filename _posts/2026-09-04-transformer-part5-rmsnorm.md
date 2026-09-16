@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 1150px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看5个token经过RMSNorm前后的数值变化">
-    <img src="{{ '/assets/images/transformer_part5/Transformer_part5_1_中.png' | relative_url }}" alt="The capital of France is这5个token经过RMSNorm前后的RMS、最小值和最大值，以及共享的Gamma参数统计">
+    <img src="{{ '/assets/images/transformer_part5/transformer_part5_1_中.png' | relative_url }}" alt="The capital of France is这5个token经过RMSNorm前后的RMS、最小值和最大值，以及共享的Gamma参数统计">
   </button>
 </figure>
 

@@ -112,6 +112,17 @@ article h4 {
   }
 }
 
+/* ===== 小型数据表：避免少量列被主题拉满整行 ===== */
+.compact-table {
+  overflow-x: auto;
+}
+
+.compact-table table {
+  width: min(100%, 480px) !important;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /* ===== 文档图片：正文内自适应，点击后打开大图 ===== */
 .diagram-image {
   width: min(100%, var(--diagram-max-width, 794px));

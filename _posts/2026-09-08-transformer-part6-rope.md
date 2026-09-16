@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 1200px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看RoPE旋转位置编码的计算过程">
-    <img src="{{ '/assets/images/transformer_part6/Transformer_part6_1_中.png' | relative_url }}" alt="RoPE根据位置编号计算旋转角度，并分别旋转Q和K中的每一对分量，V不参与旋转">
+    <img src="{{ '/assets/images/transformer_part6/transformer_part6_1_中.png' | relative_url }}" alt="RoPE根据位置编号计算旋转角度，并分别旋转Q和K中的每一对分量，V不参与旋转">
   </button>
 </figure>
 

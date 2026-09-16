@@ -8,13 +8,13 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 1400px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看MHA完整计算流程图">
-    <img src="{{ '/assets/images/transformer_part7/Transformer_part7_1_MHA.png' | relative_url }}" alt="MHA中每个Query头分别使用一个独立的KV头，并将各头结果拼接后完成输出投影">
+    <img src="{{ '/assets/images/transformer_part7/transformer_part7_1_MHA.png' | relative_url }}" alt="MHA中每个Query头分别使用一个独立的KV头，并将各头结果拼接后完成输出投影">
   </button>
 </figure>
 
 <figure class="diagram-image" style="--diagram-max-width: 1400px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看GQA完整计算流程图">
-    <img src="{{ '/assets/images/transformer_part7/Transformer_part7_2_GQA.png' | relative_url }}" alt="GQA将多个Query头划分为查询组，每个查询组共享一个KV头">
+    <img src="{{ '/assets/images/transformer_part7/transformer_part7_2_GQA.png' | relative_url }}" alt="GQA将多个Query头划分为查询组，每个查询组共享一个KV头">
   </button>
 </figure>
 
@@ -104,7 +104,7 @@ GQA节省缓存的直接原因，是需要保存的KV头从16个减少到了2个
 
 <figure class="diagram-image" style="--diagram-max-width: 1500px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看MLA完整计算流程图">
-    <img src="{{ '/assets/images/transformer_part7/Transformer_part7_3_MLA.png' | relative_url }}" alt="DeepSeek-V3的MLA将KV压缩为512维潜在表示，单独保留64维RoPE部分，再为各注意力头生成内容Key和Value">
+    <img src="{{ '/assets/images/transformer_part7/transformer_part7_3_MLA.png' | relative_url }}" alt="DeepSeek-V3的MLA将KV压缩为512维潜在表示，单独保留64维RoPE部分，再为各注意力头生成内容Key和Value">
   </button>
 </figure>
 

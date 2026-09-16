@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 794px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看Transformer Block流程示意图">
-    <img src="{{ '/assets/images/transformer_part2/Transformer_细节_中等.png' | relative_url }}" alt="Transformer Block流程示意图">
+    <img src="{{ '/assets/images/transformer_part2/transformer_细节_中等.png' | relative_url }}" alt="Transformer Block流程示意图">
   </button>
 </figure>
 
