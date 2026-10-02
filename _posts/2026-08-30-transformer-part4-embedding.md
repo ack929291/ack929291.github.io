@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "手撕Transformer part4 Embedding"
+title: "理解Transformer part4 Embedding"
 date: 2026-08-30 22:00:00 +0800
 categories: Transformer
 tags: [transformer]

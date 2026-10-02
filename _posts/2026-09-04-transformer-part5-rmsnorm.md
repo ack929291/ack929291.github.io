@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "手撕Transformer part5 RMSNorm"
+title: "理解Transformer part5 RMSNorm"
 date: 2026-09-04 00:00:00 +0800
 categories: Transformer
 tags: [transformer]

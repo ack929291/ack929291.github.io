@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "手撕Transformer part3 Tokenizer"
+title: "理解Transformer part3 Tokenizer"
 date: 2026-08-30 14:30:00 +0800
 categories: Transformer
 tags: [transformer]

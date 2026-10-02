@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "手撕Transformer part2 Transformer Block流程"
+title: "理解Transformer part2 Transformer Block流程"
 date: 2026-08-23 22:31:00 +0800
 categories: Transformer
 tags: [transformer]

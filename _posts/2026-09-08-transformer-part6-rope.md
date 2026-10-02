@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "手撕Transformer part6 RoPE旋转位置编码"
+title: "理解Transformer part6 RoPE旋转位置编码"
 date: 2026-09-08 00:00:00 +0800
 categories: Transformer
 tags: [transformer]

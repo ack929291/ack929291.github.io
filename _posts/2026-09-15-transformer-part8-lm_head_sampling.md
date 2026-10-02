@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "手撕Transformer part8 LM Head与采样"
+title: "理解Transformer part8 LM Head与采样"
 date: 2026-09-15 19:30:00 +0800
 categories: Transformer
 tags: [transformer]
