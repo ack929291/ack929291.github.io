@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 794px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看Tokenizer流程示意图">
-    <img src="{{ '/assets/images/transformer_part3/transformer_part3_中等.png' | relative_url }}" alt="Qwen2.5-3B中英文Tokenizer流程示意图">
+    <img src="{{ '/assets/images/transformer/part3/transformer_part3_中等.png' | relative_url }}" alt="Qwen2.5-3B中英文Tokenizer流程示意图">
   </button>
 </figure>
 
