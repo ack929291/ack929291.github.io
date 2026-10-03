@@ -59,6 +59,7 @@ article h4 {
 
 /* 只处理正文分节里的 H1，文章页顶部的标题继续使用主题样式。 */
 .numbered-sections > h1 {
+  counter-set: article-section 0;
   position: relative;
   margin: 2.2em 0 0.9em !important;
   padding-bottom: 0.6em;
