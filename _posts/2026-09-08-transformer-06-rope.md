@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "理解Transformer part6 RoPE旋转位置编码"
+title: "理解Transformer 06 RoPE旋转位置编码"
 date: 2026-09-08 00:00:00 +0800
 categories: Transformer
 tags: [transformer]
@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 1200px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看RoPE旋转位置编码的计算过程">
-    <img src="{{ '/assets/images/transformer/part6/transformer_part6_1_中.png' | relative_url }}" alt="RoPE根据位置编号计算旋转角度，并分别旋转Q和K中的每一对分量，V不参与旋转">
+    <img src="{{ '/assets/images/transformer/06/transformer_06_1_中.png' | relative_url }}" alt="RoPE根据位置编号计算旋转角度，并分别旋转Q和K中的每一对分量，V不参与旋转">
   </button>
 </figure>
 
@@ -16,7 +16,7 @@ tags: [transformer]
 
 ## RoPE如何计算
 
-RoPE的计算继续以我们part2介绍过的流程为例：使用MHA Attention，分16组注意力头，每组注意力头128维，输入是5个token。为了探索RoPE的流程，我们只需关注其中一个注意力头，也就是`Q`、`K`和`V`都是`(5, 128)`的形状。5行对应输入序列中的5个位置。RoPE会根据每一行的位置编号旋转`Q`和`K`，不需要旋转`V`。
+RoPE的计算继续以我们在第02篇介绍过的流程为例：使用MHA Attention，分16组注意力头，每组注意力头128维，输入是5个token。为了探索RoPE的流程，我们只需关注其中一个注意力头，也就是`Q`、`K`和`V`都是`(5, 128)`的形状。5行对应输入序列中的5个位置。RoPE会根据每一行的位置编号旋转`Q`和`K`，不需要旋转`V`。
 
 同一行的`Q`和`K`的处理方式相同（比如同为第五行的`Q`和`K`），所以我们先关注`Q`的第5行。它是一个128维向量，对应的序列位置编号是4。只要看清这一行怎样旋转，其余4行以及`K`的处理过程也就清楚了。
 

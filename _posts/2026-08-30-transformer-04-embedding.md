@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "理解Transformer part4 Embedding"
+title: "理解Transformer 04 Embedding"
 date: 2026-08-30 22:00:00 +0800
 categories: Transformer
 tags: [transformer]
 ---
 
-part3中，Tokenizer把`The capital of France is`转换成了5个token ID：
+第03篇中，Tokenizer把`The capital of France is`转换成了5个token ID：
 
 ```text
 The | capital | of | France | is
@@ -91,8 +91,8 @@ The capital of Germany is Berlin
 
 ## 回到整体流程
 
-从part3的最后一步开始，Tokenizer已经得到`[785, 6722, 315, 9625, 374]`。Embedding把这些ID依次当作行号，从形状为`(151936, 2048)`的权重表中取出5行，于是输入从5个整数变成了5个2048维向量。
+从第03篇的最后一步开始，Tokenizer已经得到`[785, 6722, 315, 9625, 374]`。Embedding把这些ID依次当作行号，从形状为`(151936, 2048)`的权重表中取出5行，于是输入从5个整数变成了5个2048维向量。
 
-得到的`(5, 2048)`就是第一个Transformer Block的输入。至此，part1中从token ID到向量的过程已经完整展开。
+得到的`(5, 2048)`就是第一个Transformer Block的输入。至此，第01篇中从token ID到向量的过程已经完整展开。
 
 </section>

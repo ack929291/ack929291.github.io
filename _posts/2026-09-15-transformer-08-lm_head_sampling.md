@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "理解Transformer part8 LM Head与采样"
+title: "理解Transformer 08 LM Head与采样"
 date: 2026-09-15 19:30:00 +0800
 categories: Transformer
 tags: [transformer]
@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 794px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看LM Head与采样流程图">
-    <img src="{{ '/assets/images/transformer/part8/transformer_part8.png' | relative_url }}" alt="Qwen2.5-3B从最后一层隐藏状态经过Final RMSNorm和LM Head得到Logits，再通过贪心解码或随机采样选择下一个token">
+    <img src="{{ '/assets/images/transformer/08/transformer_08.png' | relative_url }}" alt="Qwen2.5-3B从最后一层隐藏状态经过Final RMSNorm和LM Head得到Logits，再通过贪心解码或随机采样选择下一个token">
   </button>
 </figure>
 

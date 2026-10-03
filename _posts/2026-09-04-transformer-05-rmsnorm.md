@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "理解Transformer part5 RMSNorm"
+title: "理解Transformer 05 RMSNorm"
 date: 2026-09-04 00:00:00 +0800
 categories: Transformer
 tags: [transformer]
@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 1150px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看5个token经过RMSNorm前后的数值变化">
-    <img src="{{ '/assets/images/transformer/part5/transformer_part5_1_中.png' | relative_url }}" alt="The capital of France is这5个token经过RMSNorm前后的RMS、最小值和最大值，以及共享的Gamma参数统计">
+    <img src="{{ '/assets/images/transformer/05/transformer_05_1_中.png' | relative_url }}" alt="The capital of France is这5个token经过RMSNorm前后的RMS、最小值和最大值，以及共享的Gamma参数统计">
   </button>
 </figure>
 
@@ -16,7 +16,7 @@ tags: [transformer]
 
 ## RMSNorm的运算原理
 
-part4中，Embedding把`The capital of France is`转换成了5个2048维向量，组合起来得到形状为`(5, 2048)`的输入。进入第一个Transformer Block后，RMSNorm会分别处理这5个token向量。先取其中一个token，它的2048维向量可以写成：
+第04篇中，Embedding把`The capital of France is`转换成了5个2048维向量，组合起来得到形状为`(5, 2048)`的输入。进入第一个Transformer Block后，RMSNorm会分别处理这5个token向量。先取其中一个token，它的2048维向量可以写成：
 
 \\[
 \boldsymbol{x}=(x_1,x_2,\ldots,x_d),\qquad d=2048
@@ -116,7 +116,7 @@ is       的2048维向量 → 计算自己的RMS → 2048个分量分别除以�
 
 ## 为什么需要归一化
 
-part2中每个Block在Attention和FFN之前各有一次RMSNorm。为什么需要归一化，且在每一层Transformer Block中反复调整数值尺度？这需要从神经网络怎样训练说起。
+第02篇中每个Block在Attention和FFN之前各有一次RMSNorm。为什么需要归一化，且在每一层Transformer Block中反复调整数值尺度？这需要从神经网络怎样训练说起。
 
 模型会根据当前输出计算一个损失`L`（损失可以理解为模型输出和正确答案之间的差距），再通过反向传播求出损失相对于每个参数的梯度。假设模型中的一个参数是`θ`，它的梯度为：
 
@@ -347,5 +347,5 @@ y_i
 与LayerNorm相比，RMSNorm省去了均值的计算，也省去了“先求均值，再根据均值计算方差”的依赖关系。本文所观察的Qwen RMSNorm没有`β`这组可训练参数。因此，无论是前向计算还是反向求导，RMSNorm的计算过程都更加简单。
 
 
-至此，part2中原本被概括成一步的RMSNorm已经完整展开。Embedding产生的向量经过第一次RMSNorm以后，就会进入Attention，开始计算Q、K和V。
+至此，第02篇中原本被概括成一步的RMSNorm已经完整展开。Embedding产生的向量经过第一次RMSNorm以后，就会进入Attention，开始计算Q、K和V。
 </section>

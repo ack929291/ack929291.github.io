@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "理解Transformer part3 Tokenizer"
+title: "理解Transformer 03 Tokenizer"
 date: 2026-08-30 14:30:00 +0800
 categories: Transformer
 tags: [transformer]
@@ -8,11 +8,11 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 794px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看Tokenizer流程示意图">
-    <img src="{{ '/assets/images/transformer/part3/transformer_part3_中等.png' | relative_url }}" alt="Qwen2.5-3B中英文Tokenizer流程示意图">
+    <img src="{{ '/assets/images/transformer/03/transformer_03_中等.png' | relative_url }}" alt="Qwen2.5-3B中英文Tokenizer流程示意图">
   </button>
 </figure>
 
-part1中，Tokenizer把`The capital of France is`转换成了`[785, 6722, 315, 9625, 374]`，随后Embedding根据这些编号取出5个向量。当时这两部分都被当成了一步完成。这篇文章展开Tokenizer，看看一段字符串如何沿着图中的流程，逐步变成模型能够使用的token ID。
+第01篇中，Tokenizer把`The capital of France is`转换成了`[785, 6722, 315, 9625, 374]`，随后Embedding根据这些编号取出5个向量。当时这两部分都被当成了一步完成。这篇文章展开Tokenizer，看看一段字符串如何沿着图中的流程，逐步变成模型能够使用的token ID。
 
 <section class="numbered-sections" markdown="1">
 
@@ -368,7 +368,7 @@ token IDs = [104328, 9370, 59975, 100132]
 
 ## 回到整体流程
 
-现在再看part1中被折叠成一步的Tokenizer，它完成的是一条确定的数据加工流程：NFC先统一Unicode表示；正则表达式把文本分成切片；UTF-8和ByteLevel把所有文字落实到256种基础符号；BPE按照语料中学到的merge规则缩短序列；词表最后把token换成稳定的整数ID。
+现在再看第01篇中被折叠成一步的Tokenizer，它完成的是一条确定的数据加工流程：NFC先统一Unicode表示；正则表达式把文本分成切片；UTF-8和ByteLevel把所有文字落实到256种基础符号；BPE按照语料中学到的merge规则缩短序列；词表最后把token换成稳定的整数ID。
 
 整个过程中，训练阶段产生规则，BPE推理阶段应用规则。正则预切分规定哪些位置允许组合，BPE的rank决定重叠候选的合并顺序，最终得到的token ID则成为Embedding的输入。下一篇继续沿着这条数据流，展开这些整数如何变成`(5, 2048)`的向量。
 

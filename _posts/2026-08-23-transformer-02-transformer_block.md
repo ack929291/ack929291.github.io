@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "理解Transformer part2 Transformer Block流程"
+title: "理解Transformer 02 Transformer Block流程"
 date: 2026-08-23 22:31:00 +0800
 categories: Transformer
 tags: [transformer]
@@ -8,11 +8,11 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 794px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看Transformer Block流程示意图">
-    <img src="{{ '/assets/images/transformer/part2/transformer_细节_中等.png' | relative_url }}" alt="Transformer Block流程示意图">
+    <img src="{{ '/assets/images/transformer/02/transformer_细节_中等.png' | relative_url }}" alt="Transformer Block流程示意图">
   </button>
 </figure>
 
-part1中，输入文本经过Tokenizer和Embedding后，被转换成5个2048维向量，并作为Transformer Blocks的输入。这篇文章把此前省略的Transformer Block展开，看看这些向量在Block内部依次经过哪些步骤，以及这些步骤为什么会出现在这里。各模块内部的具体计算留到后面分别展开。
+第01篇中，输入文本经过Tokenizer和Embedding后，被转换成5个2048维向量，并作为Transformer Blocks的输入。这篇文章把此前省略的Transformer Block展开，看看这些向量在Block内部依次经过哪些步骤，以及这些步骤为什么会出现在这里。各模块内部的具体计算留到后面分别展开。
 
 图中使用的是便于理解和实现的简化结构：Attention采用16头多头注意力（MHA），FFN采用两层全连接与ReLU激活。下面的流程都以这套简化结构为准。
 
@@ -126,7 +126,7 @@ M = \begin{bmatrix} 0 & -\infty & -\infty & -\infty & -\infty \\\\ 0 & 0 & -\inf
 
 以第3行`of`为例，它可以匹配`The`、`capital`和`of`，位于它后面的`France`和`is`会被加上负无穷。它们经过Softmax后得到0权重，相当于从注意力范围中被遮住。这样，每个位置汇总的都是从句子开头到当前位置为止的信息。
 
-这也对应part1中的5行logits：第1个位置根据`The`预测后面的token，第2个位置根据`The capital`预测后面的token，直到第5个位置根据完整的`The capital of France is`预测下一个token。
+这也对应第01篇中的5行logits：第1个位置根据`The`预测后面的token，第2个位置根据`The capital`预测后面的token，直到第5个位置根据完整的`The capital of France is`预测下一个token。
 
 ## Softmax：把匹配分数变成注意力权重
 
@@ -226,6 +226,6 @@ x^1 = x\_{\mathrm{attn}} + F
 
 从`x^0`到`x^1`，5个向量的数量和维度保持`(5, 2048)`，其中的内容先经过Attention汇总上下文，再经过FFN继续变换，并通过两次残差连接合入当前表示。这就是一个完整Transformer Block完成的处理。
 
-`x^1`随后作为第二个Block的输入，后面35个Block按照相同的结构继续工作，但每个Block都拥有自己的参数。经过全部36个Block后，最后得到的5个向量会回到part1中的生成流程，继续经过最终的RMSNorm和LM Head，转换成5个位置各自的token候选分数，生成时再使用最后一行预测下一个token。至此，Embedding与输出层之间原本被折叠起来的Transformer Blocks就完整展开了。
+`x^1`随后作为第二个Block的输入，后面35个Block按照相同的结构继续工作，但每个Block都拥有自己的参数。经过全部36个Block后，最后得到的5个向量会回到第01篇中的生成流程，继续经过最终的RMSNorm和LM Head，转换成5个位置各自的token候选分数，生成时再使用最后一行预测下一个token。至此，Embedding与输出层之间原本被折叠起来的Transformer Blocks就完整展开了。
 
 </section>

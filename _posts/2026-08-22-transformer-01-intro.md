@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "理解Transformer part1 整体流程"
+title: "理解Transformer 01 整体流程"
 date: 2026-08-22 20:52:00 +0800
 categories: Transformer
 tags: [transformer]
@@ -8,7 +8,7 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 794px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看Transformer整体流程示意图">
-    <img src="{{ '/assets/images/transformer/part1/transformer_整体_中等.png' | relative_url }}" alt="Transformer整体流程示意图">
+    <img src="{{ '/assets/images/transformer/01/transformer_整体_中等.png' | relative_url }}" alt="Transformer整体流程示意图">
   </button>
 </figure>
 

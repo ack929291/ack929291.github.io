@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "理解Transformer part7 MHA GQA MLA"
+title: "理解Transformer 07 MHA GQA MLA"
 date: 2026-09-13 00:00:00 +0800
 categories: Transformer
 tags: [transformer]
@@ -8,13 +8,13 @@ tags: [transformer]
 
 <figure class="diagram-image" style="--diagram-max-width: 1400px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看MHA完整计算流程图">
-    <img src="{{ '/assets/images/transformer/part7/transformer_part7_1_MHA.png' | relative_url }}" alt="MHA中每个Query头分别使用一个独立的KV头，并将各头结果拼接后完成输出投影">
+    <img src="{{ '/assets/images/transformer/07/transformer_07_1_MHA.png' | relative_url }}" alt="MHA中每个Query头分别使用一个独立的KV头，并将各头结果拼接后完成输出投影">
   </button>
 </figure>
 
 <figure class="diagram-image" style="--diagram-max-width: 1400px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看GQA完整计算流程图">
-    <img src="{{ '/assets/images/transformer/part7/transformer_part7_2_GQA.png' | relative_url }}" alt="GQA将多个Query头划分为查询组，每个查询组共享一个KV头">
+    <img src="{{ '/assets/images/transformer/07/transformer_07_2_GQA.png' | relative_url }}" alt="GQA将多个Query头划分为查询组，每个查询组共享一个KV头">
   </button>
 </figure>
 
@@ -104,7 +104,7 @@ GQA节省缓存的直接原因，是需要保存的KV头从16个减少到了2个
 
 <figure class="diagram-image" style="--diagram-max-width: 1500px;">
   <button class="diagram-image__trigger" type="button" aria-label="放大查看MLA完整计算流程图">
-    <img src="{{ '/assets/images/transformer/part7/transformer_part7_3_MLA.png' | relative_url }}" alt="DeepSeek-V3的MLA将KV压缩为512维潜在表示，单独保留64维RoPE部分，再为各注意力头生成内容Key和Value">
+    <img src="{{ '/assets/images/transformer/07/transformer_07_3_MLA.png' | relative_url }}" alt="DeepSeek-V3的MLA将KV压缩为512维潜在表示，单独保留64维RoPE部分，再为各注意力头生成内容Key和Value">
   </button>
 </figure>
 
@@ -192,7 +192,7 @@ Q_i_pos：    (S,64)，RoPE处理前的Query特征
 
 ### 为什么还要单独保存64维RoPE Key
 
-如果只考虑内容，512维的\\(C_N^{KV}\\)已经足够生成各个头的Key和Value。但part6文章介绍过，Attention还需要通过RoPE获得相对位置信息。如果直接对展开后的内容Key做RoPE，位置相关的旋转就会夹在潜在表示与内容Key的投影之间，使\\(W_i^{UK}\\)无法通过调整乘法顺序被吸收到Query一侧。推理时只能在每一步重新展开并旋转所有历史Key，或者缓存这些展开并旋转后的完整Key：前一种方式会带来大量重复计算，后一种方式则会失去低维缓存的显存优势。
+如果只考虑内容，512维的\\(C_N^{KV}\\)已经足够生成各个头的Key和Value。但第06篇介绍过，Attention还需要通过RoPE获得相对位置信息。如果直接对展开后的内容Key做RoPE，位置相关的旋转就会夹在潜在表示与内容Key的投影之间，使\\(W_i^{UK}\\)无法通过调整乘法顺序被吸收到Query一侧。推理时只能在每一步重新展开并旋转所有历史Key，或者缓存这些展开并旋转后的完整Key：前一种方式会带来大量重复计算，后一种方式则会失去低维缓存的显存优势。
 
 MLA因此把Key拆成两条路线。128维内容Key仍然由\\(C_N^{KV}\\)产生，并且不做RoPE，以便后面进行矩阵吸收；用于RoPE的64维Key特征则从隐藏状态中单独投影出来。\\(U\\)是经过归一化的隐藏状态：
 
