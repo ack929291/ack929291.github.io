@@ -221,6 +221,9 @@ article h4 {
   max-height: none;
   margin: 0;
   padding: 64px 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: auto;
   background: rgba(17, 24, 39, 0.92);
   border: 0;
@@ -234,10 +237,10 @@ article h4 {
 
 .image-lightbox__image {
   display: block;
-  width: 1200px;
-  max-width: none;
+  width: auto;
   height: auto;
-  margin: 0 auto;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 96px);
   background: #ffffff;
   cursor: default;
 }
